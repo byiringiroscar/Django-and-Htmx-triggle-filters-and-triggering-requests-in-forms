@@ -11,6 +11,7 @@
         <div class="form-group mb-3">
           <label>{{ form.username.label_tag }}</label>
           {{ form.username.errors }}
+          <!-- {% render_field form.username class="form-control" hx-post='/check_username/' hx-swap='.username-container' hx-trigger="keyup[sendRequest(target.value)]" hx-target="#username-error" %} -->
           {% render_field form.username class="form-control" hx-post='/check_username/' hx-swap='.username-container' hx-trigger="keyup[target.value.length > 3]" hx-target="#username-error" %}
           <div id="username-error"></div>
         </div>
@@ -27,4 +28,12 @@
       </form>
       
 </div>
+
+
+
+<script>
+   function sendRequest(value) {
+    return value.startsWith('M');
+   }
+</script>
 {% endblock content %}
